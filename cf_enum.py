@@ -18,7 +18,7 @@ cfide_admin_path = '/CFIDE/administrator/index.cfm'
 for host in f:
 	host = host.rstrip('\n')
 	r = requests.get('http://' + host + cfide_admin_path, allow_redirects=True, 
-	verify=False, timeout=5)
+	verify=False, timeout=3)
 	if r.status_code == 200:
 		print(r.url)
 	else:
