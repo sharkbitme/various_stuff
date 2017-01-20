@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """
 This script attempts to enumerate cold fusion administrative interfaces
-probably poorly, ill bet this thing is slow, will improve it eventually
 usage: python cf_enum.py <ip_addr> where ip_addr is ip address or hostname
 
 """
