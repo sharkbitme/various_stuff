@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+"""
+This script attempts to enumerate cold fusion administrative interfaces
+usage: python cf_enum.py <ip_addr> where ip_addr is ip address or hostname
+
+"""
+import requests
+from requests.exceptions import ConnectionError
+import sys
+if len(sys.argv) != 2:
+	print("Target not specified! Usage: python cf_enum.py <target_ip_addr>")
+	sys.exit(0)
+host = sys.argv[1]
+
+cfide_admin_path = '/CFIDE/administrator/index.cfm'
+r = 'http://' + host + cfide_admin_path
+try:
+    results=requests.get(r, allow_redirects=True, verify=False, timeout=0.5)
+#	print(r.url)
+    if results.status_code == 200:
+        f = open('cfwork.txt', 'a')
+	print(results.url)
+        f.write(results.url + "\r\n")
+        f.close()
+    else:
+        sys.exit(0)
+except requests.exceptions.RequestException as e:
+    print e
+    sys.exit(1)
