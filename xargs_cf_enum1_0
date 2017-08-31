@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 """
 This script attempts to enumerate cold fusion administrative interfaces
-usage: python cf_enum.py <ip_addr> where ip_addr is ip address or hostname
+usage: cat <targetfile> | xargs -Px -I % python xargs_cf_enum1_0.py %
 
 """
 import requests
 from requests.exceptions import ConnectionError
 import sys
 if len(sys.argv) != 2:
-	print("Target not specified! Usage: python cf_enum.py <target_ip_addr>")
+	print("Target not specified! Usage: cat <targetfile> | xargs -Px -I % python xargs_cf_enum1_0.py %")
 	sys.exit(0)
 host = sys.argv[1]
 
@@ -26,4 +26,3 @@ try:
         sys.exit(0)
 except requests.exceptions.RequestException as e:
     print e
-    sys.exit(1)
